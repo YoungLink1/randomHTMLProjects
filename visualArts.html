@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Visual Arts</title>
+    <style>
+      /*Import font "Google Sans" from Google Fonts*/
+      @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
+      /*Set up "Google Sans" font for usage.*/
+      .google-sans {
+        font-family: "Google Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-variation-settings:
+          "GRAD" 0;
+      }
+
+      /*end of font set up*/
+
+      html {
+        background: #804efc;
+        background: linear-gradient(0deg, rgba(128, 78, 252, 1) 0%, rgba(158, 158, 199, 1) 35%, rgba(190, 142, 142, 1) 100%);
+        backdrop-filter: blur(100px);
+        
+        max-height: 300vh;
+      }
+      
+      body {
+        min-height: 95vh;
+        max-height: 300vh;
+
+        font-family: "Google Sans", sans-serif;
+        font-size: 24px;
+      }
+      
+      
+      .img_container {
+        display: inline-block;
+
+        padding: 4px;
+
+        opacity: 50%;
+        transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), min-width 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), max-height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), border-radius 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), color 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+        background-color: rgb(153, 66, 125);
+        border-radius: 16px;
+        backdrop-filter: blur(4px);
+        
+        min-width: 180px;
+        width: auto;
+        max-width: 500px;
+        min-height: 240px;
+        max-height: 275px;
+
+        justify-content: center;
+        align-content: top;
+        align-items: center;
+        text-align: center;
+      }
+       .img_container:hover {
+         background-color: rgb(162, 93, 127);
+         border-radius: 32px;
+         
+         min-width: 480px;
+         max-height: 680px;
+         opacity: 100%;
+       }
+
+      .img_container > #title {
+        font-weight: 550;
+        font-size: 24px;
+      }
+      
+      .img_container > #description {
+        display: inline-flex;
+        
+        font-weight: 400;
+        font-size: 18px;
+
+        opacity: 0%;
+        translate: 0px 25px;
+        
+        transition: opacity 0.2s cubic-bezier(0.25, 0.1, 0.25, 1), translate 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+        transition-delay: opacity 0.1s;
+      }
+      .img_container:hover > #description {
+        opacity: 100%;
+        translate: 0px 0px;
+      }
+
+      .img_container > img {
+        translate: 0px 4px;
+        /*border: 2.5px solid #969696;*/
+        transition: transform 0.1s ease;
+        background-color: rgb(153, 66, 125); /*#be8e8e*/
+      }
+      .img_container > img:hover {
+        transform: scale(1.05);
+      }
+      .img_container:hover > img {
+        background-color: rgba(162, 93, 128, 0.25);
+      }
+
+      
+      .img16x9 {
+        width: /*80vw*/ inherit, 426.6666666666667px;
+        height: 240px;
+      }
+      
+      .img4x3 {
+        width: /*60vw*/ inherit, 320px;
+        height: 240px;
+      }
+      
+      .img1x1 {
+        width: /*24vw*/ inertit, 240px;
+        height: 240px;
+      }
+
+      
+      #bar {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        padding-left: 16px;
+        
+        width: 100vw;
+        height: 50px;
+        background-color: #2b0136;
+
+        color: white;
+        align-content: center;
+        text-align: start;
+      }
+
+      
+      #bar > audio {
+        position: fixed;
+        right: 16px;
+
+        min-width: 275px;
+        max-width: 400px;
+        height: 25px;
+        max-height: 50px;
+        
+        border-radius: 8px;
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        filter: sepia(20%) saturate(150%) hue-rotate(180deg);
+
+        transition: transform 0.1s ease, width 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), max-width 0.5s;
+      }
+      #bar > audio:hover {
+        width: 500px;
+        max-width: 600px;
+        
+        transform: scale(1.05);
+
+        transition: width 650ms linear(0, 0.05, 0.15, 0.55, 1.25, 1.25, 0.85, 1.1, 0.95, 1), max-width 850ms linear(0, 0.05, 0.15, 0.55, 1.25, 1.25, 0.85, 1.1, 0.95, 1)
+      }
+
+      
+      #startupMessage {
+        position: fixed;
+        top: 2.5%;
+        left: 1.25%;
+        padding: 16px;
+
+        width: 600px;
+        height: 400px;
+        
+        background-color: rgba(114, 23, 138, 0.25);
+        backdrop-filter: blur(8px) contrast(75%) brightness(95%);
+        border-radius: 16px;
+      }
+      
+      #startupMessage > #closeBtn {
+        position: relative;
+        bottom: 40px;
+        
+        font-size: 24px;
+
+        background-color: #ac77f2;
+        border: 3px solid #72547a;
+        border-radius: 8px;
+
+        transition: transform 0.1s ease, background-color 0.1s ease;
+      }
+      #startupMessage > #closeBtn:hover {
+        background-color: #bf94f7;
+        transform: scale(1.05) rotateX(30deg);
+      }
+      
+      /*Check out: https://prismic.io/blog/css-background-effects, they got some cool CSS stuff*/
+    </style>
+  </head>
+
+  <body>
+
+<!-- This is where each individual image box is added/stored.-->
+<!-- General Format:
+    <div>
+      <div style="width: 305px;" class="img_container">
+        <img class="img1x1" src="appleMusicIcon.svg"><br>
+        <span id="title">test image1</span><br>
+        <span id="description">line1<br>line2</span>
+    </div>
+-->
+    
+    <div>
+      <div style="width: 240px;" class="img_container">
+        <img class="img1x1" src="image upload/journal assignments/IMG_E4691.JPG"><br>
+        <span id="title">U1A3: In My Pocket</span><br>
+        <span id="description">Journal Entry<br>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;<br>
+          While this was the first actual drawing we did for the class, I had a lot of fun thinking about what I wanted to draw for this and how I'd do so. It's also fun to have a kind of comparison from the beginning of the class to the end of the class.</span>
+      </div>
+      
+      
+      <div style="width: 250px;" class="img_container">
+        <img class="img1x1" src="image upload/journal assignments/IMG_E4736.JPG"><br>
+        <span id="title">U2A1: Line Up For Success</span><br>
+        <span id="description">Journal Entry
+      </div>
+
+      <div style="width: 330px;" class="img_container">
+        <img class="img16x9" src="image upload/studio projects/IMG_E4797.JPG"><br>
+        <span id="title">U2A2: Animal Portrait</span><br>
+        <span id="description">Studio Project<br>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;<br>
+          This has been one of my favorite assignments the entire class, also which is why I revisted this artwork for my Artist's Statement.<br>This is a picture of my dog Ripley laying on the ground.</span>
+      </div>
+
+      <div style="width: 310px;" class="img_container">
+        <img class="img16x9" src="image upload/journal assignments/IMG_4886.JPG"><br>
+        <span id="title">U3A3: One Point Perspective Room</span><br>
+        <span id="description">Journal Entry<br>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;<br>
+          This Unit in particular was probably the best one. A lot of fun skills were learned and practiced throughout. I also just found it fun to try and do all this perspective drawing although it was definetely a bit of a challenge to do my kitchen.<br>Fun Fact: I drew this all in one day within about 3 hours, although I think that kinda shows lol.</span>
+      </div><br>
+
+      <div style="width: 330px;" class="img_container">
+        <img class="img16x9" src="image upload/studio projects/IMG_4887.JPG"><br>
+        <span id="title">U3A4: Perspective Design A</span><br>
+        <span id="description">Studio Project<br>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;<br>
+          First bit of this assignment was pretty fun to do, although I did struggle a bit at first with how I'd make my letters work.</span>
+      </div>
+
+      <div style="width: 320px;" class="img_container">
+        <img class="img16x9" src="image upload/studio projects/IMG_4891.JPG"><br>
+        <span id="title">U3A5: Perspective Design B</span><br>
+        <span id="description">Studio Project<br>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;<br>
+          The second bit of the prior assignment. I probably could've done a bit more although I very much rushed myself on the coloring part of this, spending about one day on it, I definetely should've done a background or patterns as well...<br>All of y'all here in the class had some really fun designs that I saw, and I'm defintely gonna have to go back through to see some of y'alls designs.</span>
+      </div>
+
+      <div style="width: 290px;" class="img_container">
+        <img class="img4x3" src="image upload/journal assignments/IMG_4903.JPG"><br>
+        <span id="title">U3A6: Value Sketching</span><br>
+        <span id="description">Journal Entry<br>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;<br>
+          IT'S PIKACHU!!! Just kidding, it's Mimikyu! So for this one I decided to lay down a solid color blanket and stretch it far so that it could have no creases then put my lamp on it, turned it on, then put my other props (soda can, lego pokeball, & mimikyu plush) down and took a picture.<br>After that, I cranked down the saturation, brought up the contrast & brightness a bit, then drew it. Was very fun to draw!</span>
+      </div>
+
+      <div style="width: 190px;" class="img_container">
+        <img class="img16x9" src="image upload/journal assignments/IMG_5022.JPG"><br>
+        <span id="title">U5A1: Gesture Drawing</span><br>
+        <span id="description">Journal Entry<br>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;<br>
+          It's just my shoe. That's all. Y'all remember this?</span>
+      </div><br>
+
+      <div style="width: 190px;" class="img_container">
+        <img class="img16x9" src="image upload/journal assignments/IMG_E5158.JPG"><br>
+        <span id="title">U6A1: Pop Art Portrait</span><br>
+        <span id="description">Journal Entry<br>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;<br>
+          Another assignment that I'd say is tied for my favorite, it was so fun to figure out the general shape of my face then make glasses, shirt, ears, hair, etc.<br>Figuring out all the color palettes was also a blast, though I think that one in the top right may be an All Star...</span>
+      </div>
+
+      <div style="width: 330px;" class="img_container">
+        <img class="img4x3" src="image upload/studio projects/IMG_E5228.JPG"><br>
+        <span id="title">U7A2: Circles and Lines</span><br>
+        <span id="description">Studio Project<br>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;<br>
+          I tried to make this look like bubbles were overlapping, red and blue ones, with a split down the middle. I wanted it to also look like some kind of comparison between light and dark mode of devices, hence the extreme color split, yet I still kept the color palette analogous (purple being the central color).<br>Now, with all this said, would I have made this digitally if I had that skill set so this could be some abstract background? Yes, very much so, I would love to see this with light shining through from the back to make a nice background, kinda similar to those seen in Windows Vista or 7.</span>
+      </div>
+      
+      <br><br><br>
+    </div>
+
+
+<!-- This is the bottom bar, which contains the music player and the credits. -->
+    
+    <div style="position: fixed; bottom: 0px; left: 0px; width: 100vw; height: 25px; background-color: #804efc;"></div>
+    <div id="bar">Created by ||||| ||||||
+
+
+<!-- This is for the additional on-screen messages. -->
+
+      <span style="position: fixed; top: 0px; right: 16px; background-color: rgba(43, 1, 54, 0.5); border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; padding-top: 2px; padding-bottom: 2px; padding-left: 4px; padding-right: 4px; backdrop-filter: blur(4px);">Intro to Visual Arts</span>
+      
+<!-- This is the music player related stuff. -->
+      
+      <span style="position: fixed; bottom: 38px; right: 16px; background-color: rgba(43, 1, 54, 0.5); border-top-left-radius: 16px; border-top-right-radius: 16px; padding-top: 2px; padding-bottom: 2px; padding-left: 4px; padding-right: 4px; backdrop-filter: blur(4px);">Music by Nintendo</span>
+      <span style="position: fixed; bottom: 76px; right: 16px; background-color: rgba(43, 1, 54, 0.5); border-radius: 16px; padding-top: 2px; padding-bottom: 2px; padding-left: 4px; padding-right: 4px; backdrop-filter: blur(4px); font-size: 18px;"><b>Platform:</b> Wii U <br><b>Song:</b> eShop - Menu (Track 3)</span>
+      
+      <audio controls loop><source src="https://lambda.vgmtreasurechest.com/soundtracks/wii-u-system-audio-background-music/epjbfvoj/28.%20eShop%20-%20Menu%20%28Track%203%29.mp3" type="audio/mpeg"></audio>
+    </div>
+
+
+<!-- This is the startup message for this page, but that's about it lol.-->
+
+
+<!--    <div id="startupMessage">
+      <b style="font-size: 28px;">Q<span style="font-size: 26px;">uick</span> M<span style="font-size: 26px;">essage</span></b><br>
+      <p style="translate: 0px -16px;">This page does have music to listen to while you browse, but I do not own it.<br>
+        It is from Nintendo's Wii U system audio background music.<br><br>
+      Along with that, the music likely can't automatically play due to browser restrictions, so you will have to press the play button to start it.<br><br>
+      Anyways, for y'all that are checking this out have a good day!</p>
+      <button id="closeBtn" style="position: relative; left: 45%;" onclick="const target = document.getElementById('startupMessage'); target.style.display = 'none';">Close</button>
+    </div> -->
+  </body>
+</html>

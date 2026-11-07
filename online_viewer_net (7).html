@@ -1,0 +1,205 @@
+<html>
+<head>
+    <title>Example Assignment Object Pages</title>
+    <style>
+        html {
+            font-size: 16px;
+            overflow-x: hidden;
+            overscroll-behavior: none;
+            height: 0;
+        }
+
+        header {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: calc(100vw - 0.5rem);
+            height: 2.25rem;
+            z-index: 10;
+            
+            background: grey;
+            outline: 1px solid black;
+            padding-top: 0.25rem;
+            padding-left: 0.25rem;
+            padding-right: 0.25rem;
+            font-size: 2rem;
+        }
+        
+        nav {
+            position: fixed;
+            left: 0;
+            top: 2.5rem;
+            width: calc(100vw - 0.5rem);
+            height: 1rem;
+            z-index: 9;
+            
+            background: lightgrey;
+            outline: 1px solid black;
+            padding-left: 0.25rem;
+            padding-right: 0.25rem;
+            padding-top: 0.125rem;
+            padding-bottom: 0.375rem;
+        }
+        
+        aside {
+            float: left;
+            position: absolute;
+            top: 4.05rem;
+            left: 0;
+            width: 9.5rem;
+            min-height: 10rem;
+            /*height: 33.475rem;*/
+            z-index: 8;
+            
+            background: white;
+            outline: 1px solid black;
+            padding-left: 0.25rem;
+            padding-right: 0.25rem;
+            padding-top: 0.125rem;
+        }
+        
+        section {
+            position: relative;
+            display: flex;
+            top: -0.25rem;
+            left: 9.5rem;
+            height: 3rem;
+            min-width: 9.5rem;
+            width: calc(100vw - 10.5rem);
+            z-index: 7;
+            
+            background: white;
+            outline: 1px solid black;
+            padding-left: 0.25rem;
+            padding-right: 0.25rem;
+            font-size: 1.625rem;
+            
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        article {
+            position: relative;
+            display: inline-block;
+            top: -1.55rem;
+            left: 9.55rem;
+            min-height: 7rem;
+            /*height: calc(30.6rem - 0.25rem);*/
+            min-width: 9.5rem;
+            width: calc(100vw - 10.5rem);
+            z-indez: 6;
+            
+            background-image: url(https://i.redd.it/8btzs8db77mh1.jpeg);
+            background-position: center;
+            background-size: cover;
+            outline: 1px solid black;
+            padding-left: 0.25rem;
+            padding-right: 0.25rem;
+            padding-top: 0.25rem;
+        }
+        
+        footer {
+            position: fixed;
+            display: flex;
+            bottom: 0;
+            left: 0;
+            width: calc(100vw - 0.5rem);
+            height: 2rem;
+            z-index: 10;
+            
+            background: grey;
+            outline: 1px solid black;
+            padding-left: 0.25rem;
+            padding-right: 0.25rem;
+            padding-top: 0.125rem;
+            padding-bottom: 0.375rem;
+            font-size: 1.25rem;
+        }
+        
+        dropdown[header] {
+            position: relative;
+            display: inline;
+            top: 0;
+            left: 0;
+            height: 1rem;
+            z-index: 1;
+            
+            background: rgba(255, 0, 255, 0.5);
+            backdrop-filter: blur(4px);
+            outline: 1px solid black;
+            padding: 2px;
+            user-select: none;
+        }
+        
+        dropdown[header]:has(input[type=checkbox]:checked) {background: rgb(0, 255, 0);}
+        
+        dropdown[header] > input[type=checkbox] {
+            position: absolute;
+            top: -15%;
+            right: -2%;
+            height: 100%;
+            width: 100%;
+            
+            appearance: none;
+            cursor: pointer;
+        }
+        
+        dropdown[header] span {
+            display: inline-block;
+            rotate: 0deg;
+            transition: rotate 0.075s linear;
+            pointer-events: none;
+        }
+        
+        dropdown[header] > input[type=checkbox]:checked + span {rotate: 90deg;}
+        
+        dropdown[header] + dropdown[content] {
+            position: relative;
+            display: none;
+            top: 2px;
+            z-index: 0;
+            
+            background: rgba(191, 191, 255, 0.5);
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            backdrop-filter: blur(4px);
+        }
+        
+        dropdown[header]:has(input[type=checkbox]:checked) + dropdown[content] {display: block;}
+        
+        dropdown[header] + dropdown[content] dropdown[header] {
+            display: inline-block;
+            position: relative;
+            transform: translateX(2.5%);
+        }
+        
+        dropdown[header] + dropdown[content] dropdown[header] + dropdown[content] {
+            transform: translate(2.5%, -2px);
+        }
+    </style>
+</head>
+
+<body>
+    <header>Header</header>
+    <br><nav>Navigation</nav>
+    <br><aside>Side Content</aside>
+    <br><section>Section 1</section>
+    <br><article>Article 1<br>
+    <dropdown header><input type=checkbox><span>></span> Dropdown Nesting Test</dropdown>
+    <dropdown content>aaaa<br>aaaa<br><dropdown header><input type=checkbox><span>></span> Dropdown Nesting Test</dropdown>
+    <dropdown content>aaaa<br><dropdown header><input type=checkbox><span>></span> Dropdown Nesting Test</dropdown>
+    <dropdown content>aaaa</dropdown></dropdown></dropdown><br><br>
+    
+    
+    </article>
+    <br><footer>Footer</footer>
+    
+<script>
+    function a() {
+    document.getElementById("test2").innerHTML = document.getElementById("test1").value;
+    alert('a');
+    };
+</script>
+</body>
+</html>
